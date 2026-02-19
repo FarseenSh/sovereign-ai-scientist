@@ -6,7 +6,7 @@
 > Every hypothesis generated, every experiment designed, every paper written — independently verifiable.  
 > Removes counterparty risk from science funding.
 
-[🚀 **Live Demo**](#) &nbsp;·&nbsp; [📹 **Demo Video**](#) &nbsp;·&nbsp; [🐦 **Tweet**](#)
+[🚀 **Live Demo**](http://34.24.28.51:8080) &nbsp;·&nbsp; [🔍 **TEE Attestation**](https://verify-sepolia.eigencloud.xyz/app/0x1fAc6c4Fa4cc21f40B907F9b581668096Ba6b93C) &nbsp;·&nbsp; [📹 **Demo Video**](#)
 
 ---
 
@@ -168,28 +168,40 @@ EigenCompute runs your Docker image inside an **Intel TDX Trusted Execution Envi
 # Install EigenCloud CLI
 npm install -g @layr-labs/ecloud-cli
 
+# Set environment to Sepolia testnet
+ecloud compute env set sepolia
+
 # Authenticate with your wallet
 ecloud auth login
 # → Enter your WALLET_PRIVATE_KEY when prompted
 # → Stored securely in OS keyring
 
+# Subscribe (free $100 credit for new accounts)
+ecloud billing subscribe
+
 # Deploy from your public GitHub repo
 ecloud compute app deploy --env-file .env --name sovereign-scientist
-# → Select: Build from git source (verifiable)
-# → Enter your GitHub repo URL
-# → CLI builds linux/amd64, pushes to EigenCloud registry, starts TEE instance
+# → Build from verifiable source? Y
+# → Build from git source
+# → Repo URL: https://github.com/FarseenSh/sovereign-ai-scientist
+# → Commit SHA: git rev-parse HEAD
+# → Accept defaults for all other prompts
 
-# Get your live URL + attestation data
-ecloud compute app info
-# → Returns: App URL, Docker image digest (sha256:...), App ID
+# Get live URL + attestation
+ecloud compute app info <app-id>
 ```
 
-### What you get after deployment
+### Live Deployed Instance
 
-- **Live public URL** — share with judges, funders, anyone
-- **Docker image digest** — `sha256:abc123...` proving exactly what code ran
-- **TEE attestation** — Intel TDX hardware proof, verifiable by anyone
-- **App ID** — permanent identifier for the deployed agent
+| | |
+|---|---|
+| **Live URL** | http://34.24.28.51:8080 |
+| **App ID** | `0x1fAc6c4Fa4cc21f40B907F9b581668096Ba6b93C` |
+| **Image Digest** | `sha256:436dd1eb293517c473fed4732fc8a0f15607cf56455c28c8f38c297c38ea3cb0` |
+| **Build ID** | `68b7ba4a-efc2-4833-b87f-6d1d465f0930` |
+| **TEE Type** | Intel TDX (g1-standard-4t, 4 vCPU, 16GB) |
+| **Verifiability Dashboard** | [verify-sepolia.eigencloud.xyz](https://verify-sepolia.eigencloud.xyz/app/0x1fAc6c4Fa4cc21f40B907F9b581668096Ba6b93C) |
+| **Source Commit** | [8aad3fc](https://github.com/FarseenSh/sovereign-ai-scientist/tree/8aad3fc3124a85322fb92f30e5ec2c7bc07ff628) |
 
 ---
 
