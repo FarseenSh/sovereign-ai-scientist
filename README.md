@@ -179,13 +179,29 @@ ecloud auth login
 # Subscribe (free $100 credit for new accounts)
 ecloud billing subscribe
 
+# Get your commit SHA
+git rev-parse HEAD
+
 # Deploy from your public GitHub repo
 ecloud compute app deploy --env-file .env --name sovereign-scientist
-# → Build from verifiable source? Y
-# → Build from git source
-# → Repo URL: https://github.com/FarseenSh/sovereign-ai-scientist
-# → Commit SHA: git rev-parse HEAD
-# → Accept defaults for all other prompts
+# Interactive prompts — answer as follows:
+#
+#  Build from verifiable source?              → Y
+#  Choose verifiable source type:             → Build from git source
+#  Enter public git repository URL:           → https://github.com/YOUR_USERNAME/sovereign-ai-scientist
+#  Enter git commit SHA (40 hex chars):       → <paste output of git rev-parse HEAD>
+#  Enter build context path (relative):       → Enter (default .)
+#  Enter Dockerfile path:                     → Enter (default Dockerfile)
+#  Enter Caddyfile path (optional):           → Enter (skip)
+#  Enter dependency digests (optional):       → Enter (skip)
+#  Choose instance:                           → Enter (default g1-standard-4t)
+#  Do you want to view your app's logs?       → Yes, but only viewable by app and platform admins
+#  Show resource usage monitoring?            → Enter (default Yes)
+#  Website URL (optional):                    → Enter (skip)
+#  Description (optional):                    → Enter (skip)
+#  X (Twitter) URL (optional):               → Enter (skip)
+#  Would you like to upload an app icon?      → N
+#  Continue with this profile?                → Y
 
 # Get live URL + attestation
 ecloud compute app info <app-id>
